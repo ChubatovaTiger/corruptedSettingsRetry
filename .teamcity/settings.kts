@@ -45,7 +45,7 @@ object Build1 : BuildType({
             reuseBuilds = ReuseBuilds.NO
         }
         retrySettings {
-            maxAttempts = 3
+            maxAttempts = 2
             retryOnSameFailure = true
         }
     }
