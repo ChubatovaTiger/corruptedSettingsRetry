@@ -29,24 +29,13 @@ project {
 
     buildType(Build1)
     buildType(Build2)
+
+    template(Tmpl1)
 }
 
 object Build1 : BuildType({
+    templates(Tmpl1)
     name = "Build1"
-
-    vcs {
-        root(DslContext.settingsRoot)
-    }
-
-    dependencies {
-        snapshot(Build2) {
-            reuseBuilds = ReuseBuilds.NO
-        }
-        retrySettings {
-            maxAttempts = 3
-            retryOnSameFailure = true
-        }
-    }
 })
 
 object Build2 : BuildType({
@@ -60,6 +49,24 @@ object Build2 : BuildType({
         script {
             id = "simpleRunner"
             scriptContent = "exit 0"
+        }
+    }
+})
+
+object Tmpl1 : Template({
+    name = "tmpl1"
+
+    vcs {
+        root(DslContext.settingsRoot)
+    }
+
+    dependencies {
+        snapshot(Build2) {
+            reuseBuilds = ReuseBuilds.NO
+        }
+        retrySettings {
+            maxAttempts = 3
+            retryOnSameFailure = true
         }
     }
 })
