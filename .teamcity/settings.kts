@@ -44,6 +44,10 @@ object Build1 : BuildType({
         snapshot(Build2) {
             reuseBuilds = ReuseBuilds.NO
         }
+        retrySettings {
+            maxAttempts = 2
+            retryOnSameFailure = true
+        }
     }
 })
 
