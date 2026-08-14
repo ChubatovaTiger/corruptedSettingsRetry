@@ -47,6 +47,10 @@ object Build1 : BuildType({
 object Build2 : BuildType({
     name = "Build2"
 
+    params {
+        param("teamcity.internal.build.dependencyRetryPolicy.maxAttempts", "1")
+    }
+
     vcs {
         root(DslContext.settingsRoot)
     }
