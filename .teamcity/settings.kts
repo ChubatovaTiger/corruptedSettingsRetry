@@ -34,12 +34,19 @@ project {
 }
 
 object Build1 : BuildType({
-    templates(Tmpl1)
     name = "Build1"
 
+    vcs {
+        root(DslContext.settingsRoot)
+    }
+
     dependencies {
+        snapshot(Build2) {
+            reuseBuilds = ReuseBuilds.NO
+        }
         retrySettings {
             maxAttempts = 2
+            retryOnSameFailure = true
         }
     }
 })
