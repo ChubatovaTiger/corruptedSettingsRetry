@@ -48,7 +48,7 @@ object Build2 : BuildType({
     steps {
         script {
             id = "simpleRunner"
-            scriptContent = "exit 0"
+            scriptContent = "exit 1"
         }
     }
 })
