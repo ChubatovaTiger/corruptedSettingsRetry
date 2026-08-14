@@ -48,6 +48,7 @@ object Build2 : BuildType({
     name = "Build2"
 
     params {
+        param("teamcity.internal.build.dependencyRetryPolicy.retryOnSameFailure", "true")
         param("teamcity.internal.build.dependencyRetryPolicy.maxAttempts", "1")
     }
 
